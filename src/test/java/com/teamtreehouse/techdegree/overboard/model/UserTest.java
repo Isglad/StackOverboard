@@ -58,4 +58,13 @@ public class UserTest {
         // Verify that User2's reputation increases by 15 points
         assertEquals(15, user2.getReputation());
     }
+
+    @Test
+    public void downVotingAnswerDecreasesOnePoint() {
+        // User1 down-vote User2 answer
+        user1.downVote(answer);
+
+        // verify that User2's reputation decreases by 1 point
+        assertEquals(-1, user2.getReputation());
+    }
 }
