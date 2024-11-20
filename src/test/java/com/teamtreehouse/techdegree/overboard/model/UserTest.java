@@ -129,4 +129,29 @@ public class UserTest {
         // Verify that user can not vote for himself
         assertFalse(true);
     }
+
+    // Only Question Authors Can Accept Answer
+    @Test
+    public void nonAuthorCannotAcceptAnAnswer() throws Exception {
+        // Verify that the appropriate exception is thrown with the correct message
+        thrown.expect(AnswerAcceptanceException.class);
+        thrown.expectMessage("Only Jane can accept this answer as it is their question");
+
+        // Non-author accept an answer
+        user3.acceptAnswer(answer);
+
+        // Verify that the answer is not accepted
+        assertEquals(false, answer.isAccepted());
+    }
+
+
+    @Test
+    public void onlyOriginalQuestionerCanAcceptAnAnswer() throws Exception {
+        // Original questioner accept an answer
+        user1.acceptAnswer(answer);
+
+        // Verify that the answer is successfully accepted
+        assertEquals(true, answer.isAccepted());
+    }
+
 }
