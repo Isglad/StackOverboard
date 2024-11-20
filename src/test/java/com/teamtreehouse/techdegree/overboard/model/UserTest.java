@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 
 public class UserTest {
 
-    private Board board;
     private User user1;
     private User user2;
     private User user3;
@@ -24,7 +23,7 @@ public class UserTest {
     @Before
     public void setUp() throws Exception {
        // Initialize the Board
-        board = new Board("JUnit Basics");
+        Board board = new Board("JUnit Basics");
 
         // Initialize Users
         user1 = board.createUser("Jane");
